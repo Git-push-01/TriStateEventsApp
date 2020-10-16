@@ -7,7 +7,11 @@ async function eventFetch() {
   ).then(async function (response) {
     const data = await response.json()
     .then(data => {
-      data._embedded.events.map(event => console.log(event))
+    const newData =   data._embedded.events.map((venue) => ({
+        eventName: venue.name,
+        eventUrl: venue.url
+      }))
+      console.log(newData);
     })
 
   })
