@@ -9,7 +9,12 @@ async function eventFetch() {
     .then(data => {
     const newData =   data._embedded.events.map((venue) => ({
         eventName: venue.name,
-        eventUrl: venue.url
+        eventUrl: venue.url,
+        eventImg: venue.images.map((img) => {
+          imgRatio:img.ratio,
+          imgUrl: img.url
+
+        })
       }))
       console.log(newData);
     })
