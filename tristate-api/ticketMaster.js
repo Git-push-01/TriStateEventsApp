@@ -11,7 +11,7 @@ async function eventFetch() {
         eventUrl: venue.url,
         eventImg: venue.images[2].url,
         eventNote: venue.pleaseNote,
-        
+
       }));
 
       console.log(eventData);
