@@ -1,7 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const eventFetch = require("./ticketMaster");
+const events = require("./ticketMaster")
+
+
+
+
+
+
+
 
 
 
@@ -19,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/", function (req, res) {
-  res.send();
+  res.send(events);
 });
 
 const PORT = process.env.PORT || 5000;

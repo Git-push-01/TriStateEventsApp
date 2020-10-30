@@ -13,6 +13,7 @@ async function eventFetch() {
         eventNote: venue.pleaseNote,
       }));
       return events
+console.log(events);
     });
   });
 
