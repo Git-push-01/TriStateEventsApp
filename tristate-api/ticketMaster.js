@@ -5,21 +5,21 @@ async function eventFetch() {
   const response = await fetch(
     `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${apiKey}&classificationName=comedy&dmaId=345&page=0&size=10`
   ).then(async function (response) {
-    const data = await response.json().then((data) => {
-      const eventData =  data._embedded.events.map((venue) => ({
+    await response.json().then((data) => {
+      const events = data._embedded.events.map((venue) => ({
         eventName: venue.name,
         eventUrl: venue.url,
         eventImg: venue.images[2].url,
         eventNote: venue.pleaseNote,
-      }))
-
-
-
-
-
+      }));
+      return events
     });
-
-
   });
+
+
 }
- module.export= eventFetch()
+
+
+
+module.export = eventFetch()
+console.log(module.export);

@@ -1,9 +1,12 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const eventFetch = require("./ticketMaster");
+
+
+
 // const passport = require('passport');
 // const config = require('./db');
-
 
 // mongoose.connect(config.DB, { useNewUrlParser: true }).then(
 //     () => {console.log('Database is connected') },
@@ -12,17 +15,15 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
- // app.use(bodyParser.urlencoded({ extended: false }));
- // app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.get('/', function(req, res) {
- res.json()
+app.get("/", function (req, res) {
+  res.send();
 });
-const eventData = require("./ticketMaster")
-// eventData.then(async function (events) {await  JSON.stringify(events)})
-console.log(eventData);
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log(`Server is running on PORT ${PORT}`);
+  console.log(`Server is running on PORT ${PORT}`);
 });
