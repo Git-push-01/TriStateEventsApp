@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const events = require("./ticketMaster");
-const CircularJSON = require('flatted');
 
 // const passport = require('passport');
 // const config = require('./db');
@@ -18,10 +17,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 async function getEvents() {
-  return await events.then((res) => {
-    console.log(res);
-    app.get("/", function (req, res) {
-      res.send(".");
+  return await events.then((response) => {
+    app.get("/", (req, res) => {
+      return res
+        .status(200)
+        .send({
+          events: response
+        });
     });
   });
 }
