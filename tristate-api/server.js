@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const events = require("./ticketMaster");
+var cors = require('cors')
 
 // const passport = require('passport');
 // const config = require('./db');
@@ -12,13 +13,17 @@ const events = require("./ticketMaster");
 // );
 
 const app = express();
+app.use(cors())
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+var cors = require('cors')
+
+
 
 async function getEvents() {
   return await events.then((response) => {
-    app.get("/", (req, res) => {
+    app.get("/events", (req, res) => {
       return res
         .status(200)
         .send({

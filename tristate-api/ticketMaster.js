@@ -3,7 +3,7 @@ const { apiKey } = require("./config");
 
 async function eventFetch() {
   let response = await fetch(
-    `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${apiKey}&classificationName=comedy&dmaId=345&page=0&size=15`
+    `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${apiKey}&classificationName=comedy&dmaId=345&page=0&size=10`
   )
     .then((res) => res.json())
     .then((data) => data._embedded.events.map((venue) => ({
