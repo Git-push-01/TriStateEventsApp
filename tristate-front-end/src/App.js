@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Card, Image, Container } from 'semantic-ui-react'
 import axios from "axios";
 import "./App.css";
 
@@ -17,18 +18,22 @@ const App = () => {
 console.log(data);
 
   return (
-    <div className="App">
-    <ul>
-     {data.events.map((item, i) => (
-       <li key={i}>
+ <Container>
+    {data.events.map((item, i) => (
 
-         <img src={item.eventImg} alt="" key={i} />
-         <a href={item.eventUrl}>{item.eventNote}</a>
-       </li>
-     ))}
-   </ul>
-    </div>
-  );
-};
+    <Card key ={i}  href={item.eventUrl}>
+       <Image src={item.eventImg} wrapped ui={false}/>
+       <Card.Content>
+         <Card.Header>{item.eventName}</Card.Header>
+         <Card.Description>
+        {item.eventNote}
+         </Card.Description>
+       </Card.Content>
+
+     </Card>
+ ))}
+</Container>
+)
+}
 
 export default App;
