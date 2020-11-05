@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import { Card, Image, Container } from "semantic-ui-react";
 import config from "./config";
 import axios from "axios";
@@ -15,14 +15,14 @@ const Events = () => {
         `https://cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/events.json?apikey=${TOKEN}&classificationName=comedy&dmaId=345&page=0&size=50`
       );
 
-      setData(result.data._embedded.events);
-      setLoading(false);
+      await setData(result.data._embedded.events);
+      await setLoading(false);
     };
 
     fetchData();
-  }, []);
+  }, [])
 
-  // .then((response) => {
+  // const newData = data.then((response) => {
   //   return response.json();
   // })
   // .then((data) =>
@@ -33,30 +33,35 @@ const Events = () => {
   //     eventNote: venue.pleaseNote,
   //   }))
   // )
+
 console.log(data);
 
-
   return (
+
     <Container>
     {loading && <h1>Loading</h1>}
     {!loading && (
+      <Fragment>
       <Card.Group
         centered
         rounded="true"
         style={{ minHeight: 100, padding: "1em 0em" }}
       >
-        {data.events.map((item, i) => (
+        {data.map((item, i) => (
           <Card key={i} href={item.url} target="_blank">
-            <Image src={item.url} centered fluid rounded />
+            <Image src={item.images[1].url} centered fluid rounded />
             <Card.Content>
               <Card.Header>{item.name}</Card.Header>
+              <Card.Description>{item.dates.start.dateTime}</Card.Description>
               <Card.Description>{item.pleaseNote}</Card.Description>
             </Card.Content>
           </Card>
         ))}
       </Card.Group>
+      </Fragment>
     )}
     </Container>
+
   );
 };
 
