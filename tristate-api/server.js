@@ -1,38 +1,26 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const events = require("./ticketMaster");
-var cors = require('cors')
+const passport = require('passport');
+const config = require('./db');
+const users = require('./routes/user'); 
 
-// const passport = require('passport');
-// const config = require('./db');
-
-// mongoose.connect(config.DB, { useNewUrlParser: true }).then(
-//     () => {console.log('Database is connected') },
-//     err => { console.log('Can not connect to the database'+ err)}
-// );
+mongoose.connect(config.DB, {useNewUrlParser: true, useUnifiedTopology: true}).then(
+    () => {console.log('Database is connected') },
+    err => { console.log('Can not connect to the database'+ err)}
+);
 
 const app = express();
-app.use(cors())
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-var cors = require('cors')
+
+
+app.get('/', function(req, res) {
+    res.send('hello');
+});
 
 
 
-async function getEvents() {
-  return await events.then((response) => {
-    app.get("/events", (req, res) => {
-      return res
-        .status(200)
-        .send({
-          events: response
-        });
-    });
-  });
-}
-getEvents();
 
 const PORT = process.env.PORT || 5000;
 
