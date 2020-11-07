@@ -10,6 +10,7 @@ const App = () => (
     rounded="true"
     style={{ minHeight: 100, padding: "1em 0em" }}
   >
+  <Navbar/>
     <Card>
       <Events />
     </Card>
