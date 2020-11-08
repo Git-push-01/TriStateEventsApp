@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require('passport');
 const config = require('./db');
-const users = require('./routes/user'); 
+const users = require('./routes/user');
 
 mongoose.connect(config.DB, {useNewUrlParser: true, useUnifiedTopology: true}).then(
     () => {console.log('Database is connected') },
@@ -11,9 +11,12 @@ mongoose.connect(config.DB, {useNewUrlParser: true, useUnifiedTopology: true}).t
 );
 
 const app = express();
+app.use(passport.initialize());
+require('./passport')(passport);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use('/api/users', users);
 
 app.get('/', function(req, res) {
     res.send('hello');

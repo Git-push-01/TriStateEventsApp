@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Fragment } from "react";
 import { Card, Image, Container } from "semantic-ui-react";
-import config from "./config";
+import config from "../config";
 import axios from "axios";
 
 const TOKEN = config.API_KEY;

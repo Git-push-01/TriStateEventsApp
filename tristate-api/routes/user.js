@@ -73,7 +73,6 @@ router.post('/login', (req, res) => {
                         if(isMatch) {
                             const payload = {
                                 id: user.id,
-                                name: user.name,
                                 avatar: user.avatar
                             }
                             jwt.sign(payload, 'secret', {
@@ -99,7 +98,6 @@ router.post('/login', (req, res) => {
 router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) => {
     return res.json({
         id: req.user.id,
-        name: req.user.name,
         email: req.user.email
     });
 });
