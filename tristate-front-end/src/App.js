@@ -13,6 +13,7 @@ import Home from "./components/Home"
 class App extends Component {
   render() {
     return (
+       <Provider store = { store }>
     <Router>
       <div>
     <Navbar/>
@@ -24,6 +25,7 @@ class App extends Component {
     </div>
     </div>
     </Router>
+    </Provider>
 );
 }
 }
