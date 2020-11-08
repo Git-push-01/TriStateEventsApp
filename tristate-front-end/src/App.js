@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store';
 import Events from "./components/Events";
 import Navbar from "./components/Navbar";
 import Register from "./components/Register"
