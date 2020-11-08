@@ -10,7 +10,6 @@ class Register extends Component {
     constructor() {
         super();
         this.state = {
-            name: '',
             email: '',
             password: '',
             password_confirm: '',
@@ -50,19 +49,6 @@ class Register extends Component {
         <div className="container" style={{ marginTop: '50px', width: '700px'}}>
             <h2 style={{marginBottom: '40px'}}>Registration</h2>
             <form onSubmit={ this.handleSubmit }>
-                <div className="form-group">
-                    <input
-                    type="text"
-                    placeholder="Name"
-                    className={classnames('form-control form-control-lg', {
-                        'is-invalid': errors.name
-                    })}
-                    name="name"
-                    onChange={ this.handleInputChange }
-                    value={ this.state.name }
-                    />
-                    {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
-                </div>
                 <div className="form-group">
                     <input
                     type="email"

@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
     render() {
         return(
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <a className="navbar-brand" href="#">Redux Auth</a>
+                <Link  className="navbar-brand" href="#">Redux Auth</Link>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <a className="nav-link" href="/">Home</a>
+                            <Link  className="nav-link" href="/">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/register">Register</a>
+                            <Link  className="nav-link" href="/register">Register</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/login">Login</a>
+                          <Link className="nav-link" href="/login">Login</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/events">Events</a>
+                            <Link className="nav-link" href="/events">Events</Link>
                         </li>
                     </ul>
                 </div>
